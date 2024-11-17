@@ -7,96 +7,89 @@
     <style>
         body {
             font-family: "Courier New", Courier, monospace;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: #282c34; /* Dark background for a code editor vibe */
+            color: #abb2bf; /* Light gray text for readability */
             line-height: 1.6;
             margin: 2em;
+        }
+        .code {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5em;
+            border-radius: 5px;
+            font-size: 1rem;
             white-space: pre-wrap;
         }
-        h1 {
-            text-align: center;
-            font-size: 2rem;
+        .comment {
+            color: #5c6370; /* Darker gray for comments */
         }
-        h2 {
-            margin-top: 1.5em;
-            font-size: 1.5rem;
+        .keyword {
+            color: #c678dd; /* Purple for keywords */
         }
-        p {
-            margin-bottom: 1em;
+        .string {
+            color: #98c379; /* Green for strings */
+        }
+        .function {
+            color: #61afef; /* Blue for functions */
         }
     </style>
 </head>
 <body>
-    <h1>The Product Leader's Manifesto</h1>
-
-    0. **Launching vs Landing**
-    Like rockets, launching a product is just the start – landing is the hard part. 
-    Anyone can launch with enough thrust, but successful landing requires constant adjustments, monitoring, 
-    and dedication to stick the landing. Focus on sustainable success over flashy launches.
-
-    1. **Action Reveals Truth**
-    Ship to learn, measure to grow. Don't design experiments to prove yourself right – 
-    build them to surface uncomfortable truths. Real insights come from embracing failure, not confirming beliefs.
-
-    2. **Lead with Empathy, Not Authority**
-    A great product leader is like a skilled tour guide – deeply knowledgeable but humble enough to adjust 
-    based on team and user needs. Build trust through understanding, not command, and remember we succeed 
-    or fail as one team.
-
-    3. **High-IQ Problems Need In-Person Collaboration**
-    Critical product decisions and complex problem-solving demand in-person collaboration. While remote 
-    work is powerful for execution, nothing replaces the energy and rapid iteration of a team working face-to-face 
-    on thorny challenges.
-
-    4. **Details Are Not Details**
-    They make the product. Every interaction, every pixel, every millisecond of latency matters. 
-    Excellence in product building comes from obsessing over the small things that others dismiss as insignificant.
-
-    5. **Stay Curious, Always**
-    The best product leaders are endlessly curious—about their users, markets, teams, and technologies. Curiosity fuels innovation.
-
-    6. **Think Big, Execute Small**
-    Hold a grand vision that inspires the team, but validate it through small, measurable experiments. 
-    Each minor victory should validate or challenge assumptions about the bigger picture.
-
-    7. **First Principles Over Assumptions**
-    Break down complex problems to their fundamental truths and rebuild from there. Challenge every assumption, 
-    especially when entering new markets or building novel solutions.
-
-    8. **Frameworks Are Overrated**
-    Frameworks help you think and communicate, but they won't solve your problems. No framework will tell you 
-    what product to build or what features matter – that comes from understanding users and solving real problems.
-
-    9. **Radical Candor Builds Great Products**
-    Foster an environment where feedback is direct, immediate, and constructive. Sugar-coating feedback 
-    or avoiding difficult conversations only leads to mediocre products.
-
-    10. **Solve Problems, Not Requests**
-    Listen deeply to problems, not just feature requests. Every feature should reduce complexity in users' lives – 
-    if you can't explain how in one sentence, rethink it.
-
-    11. **Build Learning Systems**
-    Create processes that turn individual insights into organizational knowledge. Document decisions, 
-    share learnings openly, and make knowledge accessible to everyone.
-
-    12. **Speed Through Focus**
-    Move fast by doing less, better. Ruthlessly prioritize based on first principles and core user needs 
-    rather than trying to solve every problem at once.
-
-    13. **Build Yourself Out of the Equation**
-    Your greatest achievement is building a team that no longer needs you. Empower others, foster leadership, 
-    and create systems that ensure your impact lasts beyond your tenure.
-
-    14. **Strong Opinions, Weakly Held**
-    Have conviction in your product decisions but remain intellectually humble. The best product leaders combine 
-    decisive action with the flexibility to change course when evidence demands it.
-
-    15. **Culture Eats Strategy**
-    The strongest product strategy will fail without the right culture. Build teams that embrace accountability, 
-    celebrate learning, and aren't afraid to challenge the status quo.
-
-    16. **Revenue Is a Feature**
-    Great products solve real problems in sustainable ways. Don't separate business model decisions from product decisions – 
-    they're inherently interconnected and should be designed together.
+    <h1 style="color: #61afef; text-align: center;">Joscha's Product Manifesto</h1>
+    <div class="code">
+        <span class="comment">// The Product Leader's Manifesto</span><br>
+        <span class="keyword">const</span> manifesto = {<br>
+        &nbsp;&nbsp;"0": <span class="string">"Launching vs Landing"</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Like rockets, launching a product is just the start – landing is the hard part.</span><br>
+        <br>
+        &nbsp;&nbsp;"1": <span class="string">"Action Reveals Truth"</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Ship to learn, measure to grow. Real insights come from embracing failure.</span><br>
+        <br>
+        &nbsp;&nbsp;"2": <span class="string">"Lead with Empathy, Not Authority"</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// A great product leader is like a skilled tour guide...</span><br>
+        <br>
+        &nbsp;&nbsp;"3": <span class="string">"High-IQ Problems Need In-Person Collaboration"</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Complex problem-solving demands face-to-face energy and collaboration.</span><br>
+        <br>
+        &nbsp;&nbsp;"4": <span class="string">"Details Are Not Details"</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Excellence comes from obsessing over the little things...</span><br>
+        <br>
+        &nbsp;&nbsp;"5": <span class="string">"Stay Curious, Always"</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Keep asking why, like a stubborn toddler – it's surprisingly effective.</span><br>
+        <br>
+        &nbsp;&nbsp;"6": <span class="string">"Think Big, Execute Small"</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Validate grand visions through small, measurable experiments.</span><br>
+        <br>
+        &nbsp;&nbsp;"7": <span class="string">"First Principles Over Assumptions"</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Rebuild from fundamental truths; challenge every assumption.</span><br>
+        <br>
+        &nbsp;&nbsp;"8": <span class="string">"Frameworks Are Overrated"</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// They help you think, but they won't solve your problems.</span><br>
+        <br>
+        &nbsp;&nbsp;"9": <span class="string">"Radical Candor Builds Great Products"</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Foster an environment where feedback is direct and constructive.</span><br>
+        <br>
+        &nbsp;&nbsp;"10": <span class="string">"Solve Problems, Not Requests"</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Listen deeply to problems, not just feature requests.</span><br>
+        <br>
+        &nbsp;&nbsp;"11": <span class="string">"Build Learning Systems"</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Document decisions, share openly, and make knowledge accessible.</span><br>
+        <br>
+        &nbsp;&nbsp;"12": <span class="string">"Speed Through Focus"</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Move fast by doing less, better. Ruthlessly prioritize.</span><br>
+        <br>
+        &nbsp;&nbsp;"13": <span class="string">"Build Yourself Out of the Equation"</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Empower others to thrive without you; create lasting systems.</span><br>
+        <br>
+        &nbsp;&nbsp;"14": <span class="string">"Strong Opinions, Weakly Held"</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Be decisive yet humble enough to change when evidence demands it.</span><br>
+        <br>
+        &nbsp;&nbsp;"15": <span class="string">"Culture Eats Strategy"</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Build teams that embrace accountability and challenge the status quo.</span><br>
+        <br>
+        &nbsp;&nbsp;"16": <span class="string">"Revenue Is a Feature"</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Great products solve real problems in sustainable ways.</span><br>
+        };<br>
+    </div>
 </body>
 </html>
