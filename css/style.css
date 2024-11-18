@@ -115,32 +115,33 @@ body {
 
 /* Comment styling */
 .comment-line {
-    position: absolute;
-    left: 60px; /* Align with main content */
-    right: 0;
     display: flex;
     min-height: 24px;
     align-items: center;
     opacity: 1;
-    transform: translateY(0);
     transition: all 0.2s ease;
     background: inherit;
-    padding-left: 2ch;
 }
 
 .comment-line.collapsed {
-    height: 0;
-    min-height: 0;
-    opacity: 0;
-    transform: translateY(-10px);
-    pointer-events: none;
-    overflow: hidden;
+    display: none;
 }
 
 .multi-line-comment {
     color: #7f848e;
     font-style: italic;
-    padding-left: 1ch;
+}
+
+/* Line interaction */
+.line-with-comment {
+    cursor: pointer;
+}
+
+.line-with-comment:hover {
+    background: linear-gradient(to right,
+        rgba(97, 175, 239, 0.1),
+        transparent 80%
+    );
 }
 
 /* Arrow styling */
@@ -190,7 +191,6 @@ body {
 .arrow.expanded::before {
     transform: rotate(45deg) translateY(-2px);
 }
-
 /* Syntax highlighting */
 .keyword { color: #c678dd; text-shadow: 0 0 8px rgba(198, 120, 221, 0.3); }
 .string { color: #98c379; text-shadow: 0 0 8px rgba(152, 195, 121, 0.3); }

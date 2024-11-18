@@ -85,11 +85,9 @@ function createManifestoHTML() {
     
     let lineNumber = 2;
     Object.entries(manifestoData).forEach(([key, value], index, array) => {
-        const commentId = `comment-${key}`;
-        
-        // Add the title line with the comment
+        // Add the title line
         html += `
-            <div class="line line-with-comment" data-comment="${commentId}">
+            <div class="line line-with-comment">
                 <div class="line-numbers-and-arrows">
                     <span class="line-number">${lineNumber++}</span>
                     <div class="arrow-container">
@@ -99,9 +97,18 @@ function createManifestoHTML() {
                 <span class="line-content">
                     <span class="indent"><span class="property">"${key}"</span>: <span class="string">"${value.title}"</span>${index < array.length - 1 ? ',' : ''}</span>
                 </span>
-                <div id="${commentId}" class="comment-line collapsed">
-                    <span class="multi-line-comment">/* ${value.description} */</span>
+            </div>`;
+
+        // Add the comment line as a separate line
+        html += `
+            <div class="line comment-line collapsed">
+                <div class="line-numbers-and-arrows">
+                    <span class="line-number">${lineNumber++}</span>
+                    <div class="arrow-container"></div>
                 </div>
+                <span class="line-content">
+                    <span class="indent multi-line-comment">/* ${value.description} */</span>
+                </span>
             </div>`;
     });
 
@@ -119,8 +126,7 @@ function createManifestoHTML() {
     
     // Add click handlers for collapsible comments
     document.querySelectorAll('.line-with-comment').forEach(line => {
-        const commentId = line.dataset.comment;
-        const commentLine = document.getElementById(commentId);
+        const commentLine = line.nextElementSibling;
         const arrow = line.querySelector('.arrow');
         
         line.addEventListener('click', () => {
