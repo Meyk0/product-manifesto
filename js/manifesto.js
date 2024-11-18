@@ -141,8 +141,7 @@ const articles = {
             <span class="line-content"><span class="bracket">}</span>;</span>
         </div>`;
  
-    // Add articles section
-    html += `
+        html += `
         <div class="line">
             <div class="line-numbers-and-arrows">
                 <span class="line-number">${lineNumber++}</span>
@@ -153,7 +152,7 @@ const articles = {
             </span>
         </div>`;
  
-    // Add featured articles section
+    // Featured Articles
     html += `
         <div class="line">
             <div class="line-numbers-and-arrows">
@@ -165,18 +164,54 @@ const articles = {
             </span>
         </div>`;
  
-        articles.featured.forEach((article, index) => {
-            html += `
-                <div class="line">
-                    <div class="line-numbers-and-arrows">
-                        <span class="line-number">${lineNumber++}</span>
-                        <div class="arrow-container"></div>
-                    </div>
-                    <span class="line-content">
-                        <span class="indent indent-2"><a href="${article.url}" class="string">${article.title}</a>${index < articles.featured.length - 1 ? ',' : ''}</span>
-                    </span>
-                </div>`;
-        });
+    articles.featured.forEach((article, index) => {
+        html += `
+            <div class="line">
+                <div class="line-numbers-and-arrows">
+                    <span class="line-number">${lineNumber++}</span>
+                    <div class="arrow-container"></div>
+                </div>
+                <span class="line-content">
+                    <span class="indent indent-2"><a href="${article.url}" class="string">${article.title}</a>${index < articles.featured.length - 1 ? ',' : ''}</span>
+                </span>
+            </div>`;
+    });
+ 
+    html += `
+        <div class="line">
+            <div class="line-numbers-and-arrows">
+                <span class="line-number">${lineNumber++}</span>
+                <div class="arrow-container"></div>
+            </div>
+            <span class="line-content">
+                <span class="indent">],</span>
+            </span>
+        </div>`;
+ 
+    // Authored Articles
+    html += `
+        <div class="line">
+            <div class="line-numbers-and-arrows">
+                <span class="line-number">${lineNumber++}</span>
+                <div class="arrow-container"></div>
+            </div>
+            <span class="line-content">
+                <span class="indent"><span class="property">"authored"</span>: [</span>
+            </span>
+        </div>`;
+ 
+    articles.authored.forEach((article, index) => {
+        html += `
+            <div class="line">
+                <div class="line-numbers-and-arrows">
+                    <span class="line-number">${lineNumber++}</span>
+                    <div class="arrow-container"></div>
+                </div>
+                <span class="line-content">
+                    <span class="indent indent-2"><a href="${article.url}" class="string">${article.title}</a>${index < articles.authored.length - 1 ? ',' : ''}</span>
+                </span>
+            </div>`;
+    });
  
     html += `
         <div class="line">
@@ -189,7 +224,6 @@ const articles = {
             </span>
         </div>`;
  
-    // Close articles object
     html += `
         <div class="line">
             <div class="line-numbers-and-arrows">
@@ -201,7 +235,6 @@ const articles = {
  
     document.getElementById('manifestoContent').innerHTML = html;
     
-    // Add click handlers for collapsible comments
     document.querySelectorAll('.line-with-comment').forEach(line => {
         const commentLine = line.nextElementSibling;
         const arrow = line.querySelector('.arrow');
