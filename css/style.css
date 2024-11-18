@@ -14,12 +14,16 @@ body {
     margin: 0 auto;
     background-color: #282c34;
     min-height: 100vh;
+    overflow-x: auto; /* Enable horizontal scroll if needed */
 }
 
 .title-bar {
     background-color: #21252b;
     padding: 8px 16px;
     border-bottom: 1px solid #181a1f;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 .file-name {
@@ -29,6 +33,7 @@ body {
 
 .code-content {
     padding: 0;
+    min-width: min-content; /* Ensure content doesn't squeeze too narrow */
 }
 
 /* Line styles */
@@ -36,6 +41,7 @@ body {
     display: flex;
     min-height: 22px;
     align-items: center;
+    white-space: nowrap; /* Prevent line wrapping */
 }
 
 .line-numbers-and-arrows {
@@ -46,13 +52,6 @@ body {
     flex-shrink: 0;
 }
 
-.arrow-container {
-    width: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .line-number {
     color: #495162;
     text-align: right;
@@ -60,6 +59,30 @@ body {
     width: 30px;
     font-size: 12px;
     padding-right: 4px;
+    order: 1;
+}
+
+.arrow-container {
+    width: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    order: 2;
+}
+
+.line-content {
+    flex: 1;
+    overflow-x: auto; /* Enable horizontal scroll for very long lines */
+}
+
+.indent {
+    padding-left: 4ch;
+}
+
+.multi-line-comment {
+    color: #5c6370;
+    font-style: italic;
+    padding-left: 4ch;
 }
 
 /* Syntax highlighting */
@@ -70,30 +93,7 @@ body {
 .bracket { color: #abb2bf; }
 .const-name { color: #61afef; }
 
-.line-content {
-    flex: 1;
-    white-space: pre-wrap;
-}
-
-.indent {
-    padding-left: 20px;
-}
-
-.multi-line-comment {
-    color: #5c6370;
-    font-style: italic;
-    padding-left: 20px;
-}
-
-/* Collapsible arrow styles */
-.line-with-comment {
-    cursor: pointer;
-}
-
-.line-with-comment:hover {
-    background-color: #2c313a;
-}
-
+/* Arrow styles */
 .arrow {
     display: inline-flex;
     justify-content: center;
@@ -133,10 +133,10 @@ body {
     opacity: 1;
 }
 
-/* Mobile optimization */
+/* Tablet optimization */
 @media (max-width: 768px) {
     body {
-        font-size: 12px;
+        font-size: 13px;
     }
 
     .line-numbers-and-arrows {
@@ -144,32 +144,95 @@ body {
         padding-right: 8px;
     }
 
-    .arrow-container {
-        width: 14px;
-    }
-
     .line-number {
         width: 24px;
         font-size: 11px;
     }
 
+    .arrow-container {
+        width: 14px;
+    }
+
     .indent {
-        padding-left: 12px;
+        padding-left: 3ch;
     }
 
     .multi-line-comment {
-        padding-left: 12px;
+        padding-left: 3ch;
+    }
+}
+
+/* Mobile optimization */
+@media (max-width: 480px) {
+    body {
+        font-size: 12px;
+    }
+
+    .editor-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+
+    .title-bar {
+        padding: 6px 12px;
+    }
+
+    .line-numbers-and-arrows {
+        width: 45px;
+        padding-right: 6px;
+    }
+
+    .line-number {
+        width: 20px;
+        font-size: 10px;
+    }
+
+    .arrow-container {
+        width: 12px;
+    }
+
+    .arrow::before {
+        width: 6px;
+        height: 6px;
+    }
+
+    .indent {
+        padding-left: 2ch;
+    }
+
+    .multi-line-comment {
+        padding-left: 2ch;
     }
 }
 
 /* For very small screens */
-@media (max-width: 480px) {
+@media (max-width: 320px) {
+    body {
+        font-size: 11px;
+    }
+
     .line-numbers-and-arrows {
         width: 40px;
         padding-right: 4px;
     }
 
-    .indent {
-        padding-left: 8px;
+    .line-number {
+        width: 18px;
+    }
+
+    .arrow-container {
+        width: 10px;
+    }
+}
+
+/* Touch device optimization */
+@media (hover: none) {
+    .line-with-comment {
+        cursor: pointer;
+        -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .line-with-comment:active {
+        background-color: #2c313a;
     }
 }

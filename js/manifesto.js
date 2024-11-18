@@ -77,10 +77,10 @@ function createManifestoHTML() {
     let html = `
         <div class="line">
             <div class="line-numbers-and-arrows">
-                <div class="arrow-container"></div>
                 <span class="line-number">1</span>
+                <div class="arrow-container"></div>
             </div>
-            <span class="line-content"><span class="keyword">const</span> <span class="const-name">manifesto</span> <span class="operator">=</span> <span class="bracket">{</span></span>
+            <span class="line-content"><span class="keyword">const</span> <span class="const-name">productManifesto</span> <span class="operator">=</span> <span class="bracket">{</span></span>
         </div>`;
     
     let lineNumber = 2;
