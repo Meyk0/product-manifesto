@@ -224,20 +224,30 @@ body {
         overflow-x: auto;
     }
     
+    .comment-line {
+        display: flex;
+        min-height: 24px;
+        align-items: center;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .comment-line.collapsed {
+        display: none;
+    }
+
     .multi-line-comment {
         color: #7f848e;
         font-style: italic;
-        padding-left: 4ch; /* Increased padding for comment indent */
-        display: block; /* Makes comment appear on new line */
         line-height: 1.6;
-        opacity: 1;
-        transition: opacity 0.2s ease;
     }
     
     .multi-line-comment.collapsed {
         display: none;
         opacity: 0;
     }
+
+
+
 }
 
 /* Mobile optimization */
