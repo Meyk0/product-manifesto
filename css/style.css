@@ -164,13 +164,19 @@ body {
 .bracket { color: #abb2bf; }
 .const-name { color: #61afef; text-shadow: 0 0 8px rgba(97, 175, 239, 0.3); }
 
-/* Comment styling */
-.multi-line-comment {
+/.multi-line-comment {
     color: #7f848e;
     font-style: italic;
     margin-left: 2ch;
     display: inline;
     line-height: 1.6;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.multi-line-comment.collapsed {
+    display: none;
+    opacity: 0;
 }
 
 /* Line interaction */
@@ -208,7 +214,15 @@ body {
     }
 
     .arrow-container {
-        width: 14px;
+        width: 16px;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        order: 2;
+    }
+
+    .line:hover .arrow-container {
+        display: flex;
     }
 
     .line-content {

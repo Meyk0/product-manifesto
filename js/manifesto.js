@@ -85,9 +85,11 @@ function createManifestoHTML() {
     
     let lineNumber = 2;
     Object.entries(manifestoData).forEach(([key, value], index, array) => {
-        // Add the title line with inline comment
+        const commentId = `comment-${key}`;
+        
+        // Add the title line with collapsible comment
         html += `
-            <div class="line line-with-comment">
+            <div class="line line-with-comment" data-comment="${commentId}">
                 <div class="line-numbers-and-arrows">
                     <span class="line-number">${lineNumber++}</span>
                     <div class="arrow-container">
@@ -96,7 +98,7 @@ function createManifestoHTML() {
                 </div>
                 <span class="line-content">
                     <span class="indent"><span class="property">"${key}"</span>: <span class="string">"${value.title}"</span>${index < array.length - 1 ? ',' : ''}</span>
-                    <span class="multi-line-comment">/* ${value.description} */</span>
+                    <span id="${commentId}" class="multi-line-comment">/* ${value.description} */</span>
                 </span>
             </div>`;
     });
@@ -112,6 +114,21 @@ function createManifestoHTML() {
         </div>`;
 
     document.getElementById('manifestoContent').innerHTML = html;
+    
+    // Add click handlers for collapsible comments
+    document.querySelectorAll('.line-with-comment').forEach(line => {
+        const commentId = line.dataset.comment;
+        const comment = document.getElementById(commentId);
+        const arrow = line.querySelector('.arrow');
+        
+        // Hide comments initially
+        comment.classList.add('collapsed');
+        
+        line.addEventListener('click', () => {
+            comment.classList.toggle('collapsed');
+            arrow.classList.toggle('expanded');
+        });
+    });
 }
 
 // Initialize when the page loads
