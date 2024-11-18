@@ -20,7 +20,7 @@ const manifestoData = {
         description: "The moment you think you've got it all figured out is the moment you start becoming irrelevant. Keep asking \"why\" like a stubborn toddler – it's surprisingly effective."
     },
     "5": {
-        title: "Think Big, Execute Small",
+        title: "Think Big, Start Small",
         description: "Dream up the flying car, but start by making the bicycle better. Your grand vision means nothing without the small wins that prove you're heading in the right direction."
     },
     "6": {
@@ -32,22 +32,14 @@ const manifestoData = {
         description: "Sugarcoating feedback is like serving a burnt dinner and calling it \"well-done.\" It helps no one. Be kind, be specific, be direct – your team can handle it."
     },
     "8": {
-        title: "Solve Problems, Not Requests",
-        description: "When users ask for a faster horse, don't start breeding horses. Figure out why they need speed in the first place. Your job is to solve problems, not take orders."
-    },
-    "9": {
         title: "Speed Through Focus",
         description: "Doing ten things poorly doesn't make you fast – it makes you ineffective. Pick the few things that matter and do them extraordinarily well. Everything else can wait."
     },
-    "10": {
+    "9": {
         title: "Strong Opinions, Weakly Held",
         description: "Have the courage to make bold bets but the humility to admit when you're wrong. Your ego isn't more important than building the right thing."
     },
-    "11": {
-        title: "Culture Eats Strategy",
-        description: "Your brilliant product strategy means nothing if your team is miserable, disengaged, or afraid to speak up. Culture isn't about ping pong tables – it's about how decisions really get made."
-    },
-    "12": {
+    "10": {
         title: "Build Yourself Out of the Equation",
         description: "Your greatest achievement is building a team that no longer needs you. Empower others, foster leadership, and create systems that ensure your impact lasts beyond your tenure."
     }
