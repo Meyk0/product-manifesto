@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: #282c34;
+    color: #abb2bf;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    line-height: 1.5;
+}
+
+.editor-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #282c34;
+    border-radius: 6px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.title-bar {
+    background-color: #21252b;
+    padding: 8px 16px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom: 1px solid #181a1f;
+}
+
+.file-name {
+    color: #6e7681;
+    font-size: 12px;
+}
+
+.code-content {
+    padding: 20px;
+}
+
+.line {
+    display: flex;
+    padding: 2px 0;
+}
+
+.line-number {
+    color: #495162;
+    padding-right: 16px;
+    min-width: 40px;
+    text-align: right;
+    user-select: none;
+}
+
+.keyword {
+    color: #c678dd;
+}
+
+.string {
+    color: #98c379;
+}
+
+.comment {
+    color: #5c6370;
+    font-style: italic;
+}
+
+.property {
+    color: #e06c75;
+}
+
+.bracket {
+    color: #abb2bf;
+}
+
+.const-name {
+    color: #61afef;
+}
+
+.line-content {
+    flex: 1;
+    white-space: pre-wrap;
+}
+
+.indent {
+    margin-left: 20px;
+}
+
+.multi-line-comment {
+    color: #5c6370;
+    font-style: italic;
+    margin-left: 40px;
+    display: block;
+    padding: 4px 0;
+}
