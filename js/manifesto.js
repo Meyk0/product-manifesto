@@ -82,16 +82,21 @@ function createManifestoHTML() {
     
     let lineNumber = 2;
     Object.entries(manifestoData).forEach(([key, value], index, array) => {
-        // Add the title line
+        const commentId = `comment-${key}`;
+        
+        // Add the title line with arrow
         html += `
-            <div class="line">
+            <div class="line line-with-comment" data-comment="${commentId}">
                 <span class="line-number">${lineNumber++}</span>
-                <span class="line-content indent"><span class="property">"${key}"</span>: <span class="string">"${value.title}"</span>${index < array.length - 1 ? ',' : ''}</span>
+                <span class="line-content">
+                    <span class="arrow"></span>
+                    <span class="indent"><span class="property">"${key}"</span>: <span class="string">"${value.title}"</span>${index < array.length - 1 ? ',' : ''}</span>
+                </span>
             </div>`;
         
-        // Add the description as a comment
+        // Add the description as a collapsible comment
         html += `
-            <div class="line">
+            <div id="${commentId}" class="line comment-block">
                 <span class="line-number">${lineNumber++}</span>
                 <span class="line-content"><span class="multi-line-comment">/* ${value.description} */</span></span>
             </div>`;
@@ -105,6 +110,19 @@ function createManifestoHTML() {
         </div>`;
 
     document.getElementById('manifestoContent').innerHTML = html;
+    
+    // Add click handlers for collapsible comments
+    document.querySelectorAll('.line-with-comment').forEach(line => {
+        line.addEventListener('click', () => {
+            const commentId = line.dataset.comment;
+            const commentBlock = document.getElementById(commentId);
+            const arrow = line.querySelector('.arrow');
+            
+            // Toggle comment visibility
+            commentBlock.classList.toggle('expanded');
+            arrow.classList.toggle('expanded');
+        });
+    });
 }
 
 // Initialize when the page loads
