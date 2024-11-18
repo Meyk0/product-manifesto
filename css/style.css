@@ -111,6 +111,8 @@ body {
     align-items: center;
     gap: 1ch;
     overflow-x: auto;
+    padding-right: 1rem; /* Add some padding on the right */
+    min-width: 0; /* Allow content to shrink */
 }
 
 /* Comment styling */
@@ -226,8 +228,15 @@ body {
     }
 
     .line-numbers-and-arrows {
-        width: 50px;
-        padding-right: 8px;
+        display: flex;
+        align-items: center;
+        width: 60px;
+        padding-right: 12px;
+        flex-shrink: 0;
+        position: sticky;
+        left: 0;
+        background: inherit;
+        z-index: 1;
     }
 
     .line-number {
@@ -240,68 +249,78 @@ body {
     }
 }
 
-/* Mobile optimization */
-@media (max-width: 480px) {
-    body {
-        padding: 0.5rem;
-        font-size: 12px;
-    }
-    
+@media (max-width: 768px) {
     .editor-container {
         margin: 0.5rem;
-        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+        width: calc(100% - 1rem);
+        overflow-x: hidden; /* Prevent horizontal scroll on container */
     }
 
-    .title-bar {
-        padding: 6px 12px;
+    .code-content {
+        overflow-x: auto; /* Allow scrolling for code content */
+        width: 100%;
+    }
+
+    .line {
+        width: 100%;
+        min-width: fit-content; /* Ensure line can contain all content */
     }
 
     .line-numbers-and-arrows {
-        width: 45px;
-        padding-right: 6px;
+        width: 50px;
+        padding-right: 8px;
+        position: sticky;
+        left: 0;
+        background: #282c34; /* Match editor background */
+        z-index: 2;
     }
 
     .line-number {
-        width: 20px;
-        font-size: 10px;
+        width: 24px;
+        font-size: 11px;
+        text-align: right;
     }
 
+    .line-content {
+        padding-right: 1rem;
+        white-space: pre; /* Prevent text wrapping */
+    }
+
+    .multi-line-comment {
+        white-space: pre-wrap; /* Allow comment text to wrap */
+        max-width: calc(100vw - 70px); /* Account for line numbers and some padding */
+    }
+
+    /* Ensure arrow container doesn't affect line number positioning */
     .arrow-container {
-        width: 12px;
-    }
-
-    .arrow::before {
-        width: 6px;
-        height: 6px;
-    }
-
-    .comment-line {
-        left: 45px;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
     }
 }
 
 /* Very small screen optimization */
-@media (max-width: 320px) {
-    body {
-        font-size: 11px;
-    }
-
+@media (max-width: 480px) {
     .line-numbers-and-arrows {
-        width: 40px;
-        padding-right: 4px;
+        width: 45px;
+        background: #282c34;
     }
 
-    .line-number {
-        width: 18px;
+    .line-content {
+        padding-left: 1ch;
+        padding-right: 0.5rem;
     }
 
-    .arrow-container {
-        width: 10px;
+    .multi-line-comment {
+        max-width: calc(100vw - 60px);
     }
+}
 
-    .comment-line {
-        left: 40px;
-    }
+/* Add smooth scrolling to container */
+.code-content {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 /* Touch device optimization */
