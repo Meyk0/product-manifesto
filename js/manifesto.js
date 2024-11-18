@@ -76,7 +76,10 @@ const manifestoData = {
 function createManifestoHTML() {
     let html = `
         <div class="line">
-            <span class="line-number">1</span>
+            <div class="line-numbers-and-arrows">
+                <div class="arrow-container"></div>
+                <span class="line-number">1</span>
+            </div>
             <span class="line-content"><span class="keyword">const</span> <span class="const-name">manifesto</span> <span class="operator">=</span> <span class="bracket">{</span></span>
         </div>`;
     
@@ -87,9 +90,13 @@ function createManifestoHTML() {
         // Add the title line with arrow
         html += `
             <div class="line line-with-comment" data-comment="${commentId}">
-                <span class="line-number">${lineNumber++}</span>
+                <div class="line-numbers-and-arrows">
+                    <div class="arrow-container">
+                        <span class="arrow"></span>
+                    </div>
+                    <span class="line-number">${lineNumber++}</span>
+                </div>
                 <span class="line-content">
-                    <span class="arrow"></span>
                     <span class="indent"><span class="property">"${key}"</span>: <span class="string">"${value.title}"</span>${index < array.length - 1 ? ',' : ''}</span>
                 </span>
             </div>`;
@@ -97,7 +104,10 @@ function createManifestoHTML() {
         // Add the description as a collapsible comment
         html += `
             <div id="${commentId}" class="line comment-block">
-                <span class="line-number">${lineNumber++}</span>
+                <div class="line-numbers-and-arrows">
+                    <div class="arrow-container"></div>
+                    <span class="line-number">${lineNumber++}</span>
+                </div>
                 <span class="line-content"><span class="multi-line-comment">/* ${value.description} */</span></span>
             </div>`;
     });
@@ -105,7 +115,10 @@ function createManifestoHTML() {
     // Add closing bracket
     html += `
         <div class="line">
-            <span class="line-number">${lineNumber}</span>
+            <div class="line-numbers-and-arrows">
+                <div class="arrow-container"></div>
+                <span class="line-number">${lineNumber}</span>
+            </div>
             <span class="line-content"><span class="bracket">}</span>;</span>
         </div>`;
 
@@ -113,7 +126,7 @@ function createManifestoHTML() {
     
     // Add click handlers for collapsible comments
     document.querySelectorAll('.line-with-comment').forEach(line => {
-        line.addEventListener('click', () => {
+        line.addEventListener('click', (event) => {
             const commentId = line.dataset.comment;
             const commentBlock = document.getElementById(commentId);
             const arrow = line.querySelector('.arrow');
@@ -121,6 +134,13 @@ function createManifestoHTML() {
             // Toggle comment visibility
             commentBlock.classList.toggle('expanded');
             arrow.classList.toggle('expanded');
+
+            // Set explicit height for animation
+            if (commentBlock.classList.contains('expanded')) {
+                commentBlock.style.height = commentBlock.scrollHeight + 'px';
+            } else {
+                commentBlock.style.height = '0';
+            }
         });
     });
 }

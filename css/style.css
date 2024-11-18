@@ -1,26 +1,24 @@
 /* Base styles */
 body {
     margin: 0;
-    padding: 20px;
+    padding: 0;
     background-color: #282c34;
     color: #abb2bf;
     font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
     line-height: 1.5;
+    font-size: 14px;
 }
 
 .editor-container {
-    max-width: 900px;
+    width: 100%;
     margin: 0 auto;
     background-color: #282c34;
-    border-radius: 6px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    min-height: 100vh;
 }
 
 .title-bar {
     background-color: #21252b;
     padding: 8px 16px;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
     border-bottom: 1px solid #181a1f;
 }
 
@@ -30,72 +28,66 @@ body {
 }
 
 .code-content {
-    padding: 20px;
+    padding: 0;
 }
 
 /* Line styles */
 .line {
     display: flex;
-    padding: 2px 0;
+    min-height: 22px;
+    align-items: center;
+}
+
+.line-numbers-and-arrows {
+    display: flex;
+    align-items: center;
+    width: 60px;
+    padding-right: 12px;
+    flex-shrink: 0;
+}
+
+.arrow-container {
+    width: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .line-number {
     color: #495162;
-    padding-right: 16px;
-    min-width: 40px;
     text-align: right;
     user-select: none;
+    width: 30px;
+    font-size: 12px;
+    padding-right: 4px;
 }
 
 /* Syntax highlighting */
-.keyword {
-    color: #c678dd;
-}
-
-.string {
-    color: #98c379;
-}
-
-.comment {
-    color: #5c6370;
-    font-style: italic;
-}
-
-.property {
-    color: #e06c75;
-}
-
-.bracket {
-    color: #abb2bf;
-}
-
-.const-name {
-    color: #61afef;
-}
+.keyword { color: #c678dd; }
+.string { color: #98c379; }
+.comment { color: #5c6370; font-style: italic; }
+.property { color: #e06c75; }
+.bracket { color: #abb2bf; }
+.const-name { color: #61afef; }
 
 .line-content {
     flex: 1;
     white-space: pre-wrap;
-    position: relative;
-    padding-left: 15px; /* Make room for arrow */
 }
 
 .indent {
-    margin-left: 20px;
+    padding-left: 20px;
 }
 
 .multi-line-comment {
     color: #5c6370;
     font-style: italic;
-    margin-left: 40px;
-    display: block;
-    padding: 4px 0;
+    padding-left: 20px;
 }
 
 /* Collapsible arrow styles */
 .line-with-comment {
     cursor: pointer;
-    position: relative;
 }
 
 .line-with-comment:hover {
@@ -103,64 +95,81 @@ body {
 }
 
 .arrow {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    left: -15px;
-    top: 2px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 16px;
+    height: 16px;
     color: #5c6370;
-    transition: transform 0.2s;
-    user-select: none;
+    cursor: pointer;
+    transition: transform 0.1s ease;
 }
 
 .arrow::before {
-    content: "▶";
-    font-size: 10px;
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-right: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    transform: rotate(-45deg) translateX(-2px);
 }
 
 .arrow.expanded::before {
-    content: "▼";
+    transform: rotate(45deg) translateY(-2px);
 }
 
 /* Comment block animation */
 .comment-block {
     display: block;
-    max-height: 0;
+    height: 0;
     overflow: hidden;
-    transition: max-height 0.2s ease-out;
-    background-color: #282c34;
+    transition: height 0.1s ease-out;
+    opacity: 0;
 }
 
 .comment-block.expanded {
-    max-height: 500px;
+    height: auto;
+    opacity: 1;
 }
 
-/* Hover effects */
-.line-with-comment:hover .arrow {
-    color: #8f96a3;
-}
-
-/* Mobile responsiveness */
+/* Mobile optimization */
 @media (max-width: 768px) {
     body {
-        padding: 10px;
+        font-size: 12px;
     }
-    
-    .editor-container {
-        max-width: 100%;
+
+    .line-numbers-and-arrows {
+        width: 50px;
+        padding-right: 8px;
     }
-    
+
+    .arrow-container {
+        width: 14px;
+    }
+
     .line-number {
-        min-width: 30px;
-        padding-right: 10px;
+        width: 24px;
+        font-size: 11px;
     }
-    
+
     .indent {
-        margin-left: 10px;
+        padding-left: 12px;
     }
-    
+
     .multi-line-comment {
-        margin-left: 20px;
+        padding-left: 12px;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+    .line-numbers-and-arrows {
+        width: 40px;
+        padding-right: 4px;
+    }
+
+    .indent {
+        padding-left: 8px;
     }
 }
