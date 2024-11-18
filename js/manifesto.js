@@ -65,19 +65,18 @@ const articles = {
     ]
  };
  
-function createManifestoHTML() {
+ function createManifestoHTML() {
     let html = `
         <div class="line">
             <div class="line-numbers-and-arrows">
                 <span class="line-number">1</span>
                 <div class="arrow-container"></div>
             </div>
-            <span class="line-content"><span class="keyword">const</span> <span class="const-name">productManifesto</span> <span class="operator">=</span> <span class="bracket">{</span></span>
+            <span class="line-content"><span class="keyword">const</span> <span class="const-name">manifestoData</span> <span class="operator">=</span> <span class="bracket">{</span></span>
         </div>`;
     
     let lineNumber = 2;
     Object.entries(manifestoData).forEach(([key, value], index, array) => {
-        // Add the title line
         html += `
             <div class="line line-with-comment">
                 <div class="line-numbers-and-arrows">
@@ -90,8 +89,7 @@ function createManifestoHTML() {
                     <span class="indent"><span class="property">"${key}"</span>: <span class="string">"${value.title}"</span>${index < array.length - 1 ? ',' : ''}</span>
                 </span>
             </div>`;
-
-        // Add the comment line as a separate line
+ 
         html += `
             <div class="line comment-line collapsed">
                 <div class="line-numbers-and-arrows">
@@ -103,17 +101,102 @@ function createManifestoHTML() {
                 </span>
             </div>`;
     });
-
-    // Add closing bracket
+ 
+    // Close manifesto object
     html += `
         <div class="line">
             <div class="line-numbers-and-arrows">
-                <span class="line-number">${lineNumber}</span>
+                <span class="line-number">${lineNumber++}</span>
                 <div class="arrow-container"></div>
             </div>
             <span class="line-content"><span class="bracket">}</span>;</span>
         </div>`;
-
+ 
+    // Add articles section
+    html += `
+        <div class="line">
+            <div class="line-numbers-and-arrows">
+                <span class="line-number">${lineNumber++}</span>
+                <div class="arrow-container"></div>
+            </div>
+            <span class="line-content">
+                <span class="keyword">const</span> <span class="const-name">articles</span> <span class="operator">=</span> <span class="bracket">{</span>
+            </span>
+        </div>`;
+ 
+    // Add featured articles section
+    html += `
+        <div class="line">
+            <div class="line-numbers-and-arrows">
+                <span class="line-number">${lineNumber++}</span>
+                <div class="arrow-container"></div>
+            </div>
+            <span class="line-content">
+                <span class="indent"><span class="property">"featured"</span>: [</span>
+            </span>
+        </div>`;
+ 
+    articles.featured.forEach((article, index) => {
+        html += `
+            <div class="line">
+                <div class="line-numbers-and-arrows">
+                    <span class="line-number">${lineNumber++}</span>
+                    <div class="arrow-container"></div>
+                </div>
+                <span class="line-content">
+                    <span class="indent indent-2"><span class="bracket">{</span></span>
+                </span>
+            </div>
+            <div class="line">
+                <div class="line-numbers-and-arrows">
+                    <span class="line-number">${lineNumber++}</span>
+                    <div class="arrow-container"></div>
+                </div>
+                <span class="line-content">
+                    <span class="indent indent-3"><span class="property">"title"</span>: <a href="${article.url}" class="string">${article.title}</a>,</span>
+                </span>
+            </div>
+            <div class="line">
+                <div class="line-numbers-and-arrows">
+                    <span class="line-number">${lineNumber++}</span>
+                    <div class="arrow-container"></div>
+                </div>
+                <span class="line-content">
+                    <span class="indent indent-3"><span class="property">"url"</span>: <span class="string">"${article.url}"</span></span>
+                </span>
+            </div>
+            <div class="line">
+                <div class="line-numbers-and-arrows">
+                    <span class="line-number">${lineNumber++}</span>
+                    <div class="arrow-container"></div>
+                </div>
+                <span class="line-content">
+                    <span class="indent indent-2"><span class="bracket">}</span>${index < articles.featured.length - 1 ? ',' : ''}</span>
+                </span>
+            </div>`;
+    });
+ 
+    html += `
+        <div class="line">
+            <div class="line-numbers-and-arrows">
+                <span class="line-number">${lineNumber++}</span>
+                <div class="arrow-container"></div>
+            </div>
+            <span class="line-content">
+                <span class="indent">]</span>
+            </span>
+        </div>`;
+ 
+    // Close articles object
+    html += `
+        <div class="line">
+            <div class="line-numbers-and-arrows">
+                <span class="line-number">${lineNumber++}</span>
+                <div class="arrow-container"></div>
+            </div>
+            <span class="line-content"><span class="bracket">}</span>;</span>
+        </div>`;
+ 
     document.getElementById('manifestoContent').innerHTML = html;
     
     // Add click handlers for collapsible comments
@@ -126,7 +209,6 @@ function createManifestoHTML() {
             arrow.classList.toggle('expanded');
         });
     });
-}
-
-// Initialize when the page loads
-document.addEventListener('DOMContentLoaded', createManifestoHTML);
+ }
+ 
+ document.addEventListener('DOMContentLoaded', createManifestoHTML);
