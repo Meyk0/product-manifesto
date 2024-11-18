@@ -20,28 +20,6 @@ body {
     padding: 2rem;
 }
 
-/* Modern reset and base styles */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #1a1d21 0%, #0f1114 100%);
-    color: #abb2bf;
-    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
-    line-height: 1.5;
-    font-size: 14px;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-}
-
 /* Container styles */
 .editor-container {
     width: 100%;
@@ -104,7 +82,6 @@ body {
     min-height: 24px;
     align-items: center;
     padding: 0.15rem 0;
-    transition: background-color 0.2s ease;
 }
 
 .line-numbers-and-arrows {
@@ -113,12 +90,6 @@ body {
     width: 60px;
     padding-right: 12px;
     flex-shrink: 0;
-    opacity: 0.5;
-    transition: opacity 0.2s ease;
-}
-
-.line:hover .line-numbers-and-arrows {
-    opacity: 1;
 }
 
 .line-number {
@@ -134,7 +105,7 @@ body {
 
 .line-content {
     flex: 1;
-    padding-left: 2ch; /* Reduced initial padding */
+    padding-left: 2ch;
     display: flex;
     align-items: center;
     gap: 1ch;
@@ -144,10 +115,14 @@ body {
 /* Arrow styling */
 .arrow-container {
     width: 16px;
-    display: flex;
+    display: none; /* Hide by default */
     justify-content: center;
     align-items: center;
     order: 2;
+}
+
+.line:hover .arrow-container {
+    display: flex; /* Show on hover */
 }
 
 .arrow {
@@ -158,7 +133,6 @@ body {
     height: 16px;
     color: #5c6370;
     cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0.6;
 }
 
@@ -190,20 +164,7 @@ body {
 .bracket { color: #abb2bf; }
 .const-name { color: #61afef; text-shadow: 0 0 8px rgba(97, 175, 239, 0.3); }
 
-/* Comment block styling */
-.comment-block {
-    display: inline-block;
-    height: auto;
-    opacity: 1;
-    transition: all 0.2s ease;
-    margin-left: 2ch;
-    background: none;
-}
-
-.comment-block.expanded {
-    padding: 0;
-}
-
+/* Comment styling */
 .multi-line-comment {
     color: #7f848e;
     font-style: italic;
@@ -247,33 +208,15 @@ body {
     }
 
     .arrow-container {
-        width: 16px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        order: 2;
-        opacity: 0; /* Hide by default */
-        transition: opacity 0.2s ease;
-    }
-
-    .line:hover .arrow-container {
-        opacity: 1;
-    }
-
-    .line-with-comment:hover {
-        cursor: pointer;
-        background: linear-gradient(to right,
-            rgba(97, 175, 239, 0.1),
-            transparent 80%
-        );
+        width: 14px;
     }
 
     .line-content {
-        padding-left: 3ch;
+        padding-left: 2ch;
     }
 
     .multi-line-comment {
-        padding-left: 3ch;
+        margin-left: 1ch;
     }
 }
 
@@ -313,11 +256,7 @@ body {
     }
 
     .line-content {
-        padding-left: 2ch;
-    }
-
-    .multi-line-comment {
-        padding-left: 2ch;
+        padding-left: 1ch;
     }
 }
 
