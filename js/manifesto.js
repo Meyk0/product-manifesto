@@ -87,7 +87,7 @@ function createManifestoHTML() {
     Object.entries(manifestoData).forEach(([key, value], index, array) => {
         const commentId = `comment-${key}`;
         
-        // Add the title line
+        // Add the title line with the comment
         html += `
             <div class="line line-with-comment" data-comment="${commentId}">
                 <div class="line-numbers-and-arrows">
@@ -99,18 +99,9 @@ function createManifestoHTML() {
                 <span class="line-content">
                     <span class="indent"><span class="property">"${key}"</span>: <span class="string">"${value.title}"</span>${index < array.length - 1 ? ',' : ''}</span>
                 </span>
-            </div>`;
-
-        // Add the comment on a separate line
-        html += `
-            <div id="${commentId}" class="line comment-line collapsed">
-                <div class="line-numbers-and-arrows">
-                    <span class="line-number">${lineNumber++}</span>
-                    <div class="arrow-container"></div>
+                <div id="${commentId}" class="comment-line collapsed">
+                    <span class="multi-line-comment">/* ${value.description} */</span>
                 </div>
-                <span class="line-content">
-                    <span class="indent multi-line-comment">/* ${value.description} */</span>
-                </span>
             </div>`;
     });
 
