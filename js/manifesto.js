@@ -49,18 +49,47 @@ const manifestoData = {
 const articles = {
     "featured": [
         {
-            "title": "How We Built Products That Scale",
-            "url": "https://medium.com/..."
+            "title": "AI TechPark Interview RAG",
+            "url": "https://ai-techpark.com/aitech-interview-with-joscha-koepke/"
         },
         {
-            "title": "The Future of Product Leadership", 
-            "url": "https://techcrunch.com/..."
+            "title": "Here’s Why Everyone is Raving About RAG", 
+            "url": "https://ai-techpark.com/why-everyone-is-raving-about-rag/"
+        },
+        {
+            "title": "How AI Is Disrupting Our Industry, and What We Can Do About It", 
+            "url": "https://medium.com/authority-magazine/joscha-koepke-of-connectly-how-ai-is-disrupting-our-industry-and-what-we-can-do-about-it-03514fbb5443"
+        },
+        {
+            "title": "Here’s Why Everyone is Raving About RAG", 
+            "url": "https://ai-techpark.com/why-everyone-is-raving-about-rag/"
+        },
+        {
+            "title": "AI Walks Into a Bar: The Quest for Artificial Humor", 
+            "url": "https://www.pymnts.com/artificial-intelligence-2/2024/ai-walks-into-a-bar-the-quest-for-artificial-humor/"
+        },
+        {
+            "title": "Unite AI Interview Series", 
+            "url": "https://www.unite.ai/joscha-koepke-head-of-product-at-connectly-interview-series/"
         }
+
     ],
     "authored": [
         {
-            "title": "Building Learning Organizations",
-            "url": "https://linkedin.com/..."
+            "title": "Launching vs. Landing: Why Product Landings Matter More Than Launches",
+            "url": "https://www.linkedin.com/pulse/launching-vs-landing-why-product-landings-matter-more-joscha-koepke-dolhe/?trackingId=tL62j8m%2BwjtxARNoyP5Mkg%3D%3D"
+        },
+        {
+            "title": "What’s the rage about RAG?", 
+            "url": "https://www.linkedin.com/pulse/whats-rage-rag-joscha-koepke-karvc/?trackingId=x%2BMclCEwgLawcOSEkXJ7WQ%3D%3D"
+        },
+        {
+            "title": "The Dawn of Agentic Chatbots", 
+            "url": "https://www.linkedin.com/pulse/dawn-agentic-chatbots-joscha-koepke-t4sbc/?trackingId=l2VV5mhUTUq1lKa%2F1FogTA%3D%3D"
+        },
+        {
+            "title": "Decision-Making at Connectly: The Power of First Principles Thinking when combined with Product Principles", 
+            "url": "https://www.linkedin.com/pulse/decision-making-connectly-power-first-principles-thinking-koepke/?trackingId=l2VV5mhUTUq1lKa%2F1FogTA%3D%3D"
         }
     ]
  };
