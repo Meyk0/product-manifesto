@@ -136,45 +136,18 @@ const articles = {
             </span>
         </div>`;
  
-    articles.featured.forEach((article, index) => {
-        html += `
-            <div class="line">
-                <div class="line-numbers-and-arrows">
-                    <span class="line-number">${lineNumber++}</span>
-                    <div class="arrow-container"></div>
-                </div>
-                <span class="line-content">
-                    <span class="indent indent-2"><span class="bracket">{</span></span>
-                </span>
-            </div>
-            <div class="line">
-                <div class="line-numbers-and-arrows">
-                    <span class="line-number">${lineNumber++}</span>
-                    <div class="arrow-container"></div>
-                </div>
-                <span class="line-content">
-                    <span class="indent indent-3"><span class="property">"title"</span>: <a href="${article.url}" class="string">${article.title}</a>,</span>
-                </span>
-            </div>
-            <div class="line">
-                <div class="line-numbers-and-arrows">
-                    <span class="line-number">${lineNumber++}</span>
-                    <div class="arrow-container"></div>
-                </div>
-                <span class="line-content">
-                    <span class="indent indent-3"><span class="property">"url"</span>: <span class="string">"${article.url}"</span></span>
-                </span>
-            </div>
-            <div class="line">
-                <div class="line-numbers-and-arrows">
-                    <span class="line-number">${lineNumber++}</span>
-                    <div class="arrow-container"></div>
-                </div>
-                <span class="line-content">
-                    <span class="indent indent-2"><span class="bracket">}</span>${index < articles.featured.length - 1 ? ',' : ''}</span>
-                </span>
-            </div>`;
-    });
+        articles.featured.forEach((article, index) => {
+            html += `
+                <div class="line">
+                    <div class="line-numbers-and-arrows">
+                        <span class="line-number">${lineNumber++}</span>
+                        <div class="arrow-container"></div>
+                    </div>
+                    <span class="line-content">
+                        <span class="indent indent-2"><a href="${article.url}" class="string">${article.title}</a>${index < articles.featured.length - 1 ? ',' : ''}</span>
+                    </span>
+                </div>`;
+        });
  
     html += `
         <div class="line">
