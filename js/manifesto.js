@@ -45,6 +45,26 @@ const manifestoData = {
     }
 };
 
+
+const articles = {
+    "featured": [
+        {
+            "title": "How We Built Products That Scale",
+            "url": "https://medium.com/..."
+        },
+        {
+            "title": "The Future of Product Leadership", 
+            "url": "https://techcrunch.com/..."
+        }
+    ],
+    "authored": [
+        {
+            "title": "Building Learning Organizations",
+            "url": "https://linkedin.com/..."
+        }
+    ]
+ };
+ 
 function createManifestoHTML() {
     let html = `
         <div class="line">
