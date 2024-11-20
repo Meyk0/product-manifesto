@@ -240,7 +240,65 @@ const articles = {
             <span class="line-content"><span class="bracket">}</span>;</span>
         </div>`;
  
-    document.getElementById('manifestoContent').innerHTML = html;
+   
+   // Contact section
+   html += `
+   <div class="line">
+       <div class="line-numbers-and-arrows">
+           <span class="line-number">${lineNumber++}</span>
+           <div class="arrow-container"></div>
+       </div>
+       <span class="line-content">
+           <span class="keyword">const</span> <span class="const-name">contact</span> <span class="operator">=</span> <span class="bracket">{</span>
+       </span>
+   </div>`;
+
+html += `
+   <div class="line">
+       <div class="line-numbers-and-arrows">
+           <span class="line-number">${lineNumber++}</span>
+           <div class="arrow-container"></div>
+       </div>
+       <span class="line-content">
+           <span class="indent"><span class="property">"social"</span>: [</span>
+       </span>
+   </div>`;
+
+contact.social.forEach((item, index) => {
+   html += `
+       <div class="line">
+           <div class="line-numbers-and-arrows">
+               <span class="line-number">${lineNumber++}</span>
+               <div class="arrow-container"></div>
+           </div>
+           <span class="line-content">
+               <span class="indent indent-2"><a href="${item.url}" class="string" target="_blank">${item.title}</a>${index < contact.social.length - 1 ? ',' : ''}</span>
+           </span>
+       </div>`;
+});
+
+html += `
+   <div class="line">
+       <div class="line-numbers-and-arrows">
+           <span class="line-number">${lineNumber++}</span>
+           <div class="arrow-container"></div>
+       </div>
+       <span class="line-content">
+           <span class="indent">]</span>
+       </span>
+   </div>`;
+
+html += `
+   <div class="line">
+       <div class="line-numbers-and-arrows">
+           <span class="line-number">${lineNumber++}</span>
+           <div class="arrow-container"></div>
+       </div>
+       <span class="line-content"><span class="bracket">}</span>;</span>
+   </div>`;
+   
+   
+        document.getElementById('manifestoContent').innerHTML = html;
     
     document.querySelectorAll('.line-with-comment').forEach(line => {
         const commentLine = line.nextElementSibling;
