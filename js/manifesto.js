@@ -93,6 +93,13 @@ const articles = {
         }
     ]
  };
+
+ const contact = {
+    "linkedin": {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/joschakoepke/"
+    }
+};
  
  function createManifestoHTML() {
     let html = `
